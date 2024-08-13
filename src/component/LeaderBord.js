@@ -7,7 +7,7 @@ const LeaderBoard = () => {
     const [leaderBoard, setLeaderBorad] = useState([])
 
     const getLeaderBoard = async () => {
-        let { data } = await axios.get(`${server}/getall`)
+        let { data } = await axios.get(`/api/getall`)
         console.log(data)
         setLeaderBorad(data)
     }

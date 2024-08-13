@@ -51,7 +51,7 @@ export const loginUser = (userData) => async (dispatch) => {
     dispatch(loginUserPending());
     try {
         console.log('kjh')
-        const { data } = await axios.post(`${server}/set`, { username: userData.name });
+        const { data } = await axios.post(`/api/set`, { username: userData.name });
         console.log(data)
         localStorage.setItem('userData', JSON.stringify(data));
         dispatch(loginUserFulfilled(data));
@@ -63,7 +63,7 @@ export const loginUser = (userData) => async (dispatch) => {
 export const increment = (userData) => async (dispatch) => {
     try {
         const updateData = { username: userData.name, points: 1 };
-        const { data } = await axios.put(`${server}/increment`, updateData);
+        const { data } = await axios.put(`/api/increment`, updateData);
         localStorage.setItem('userData', JSON.stringify(data));
         dispatch(incrementFulfilled(data));
     } catch (error) {
