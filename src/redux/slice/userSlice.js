@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {server} from '../../config.js'
 
 // Initial State
 const initialState = {
@@ -49,8 +50,8 @@ export const {
 export const loginUser = (userData) => async (dispatch) => {
     dispatch(loginUserPending());
     try {
-       
-        const { data } = await axios.post('http://localhost:8080/set', { username: userData.name });
+        console.log('kjh')
+        const { data } = await axios.post(`${server}/set`, { username: userData.name });
         console.log(data)
         localStorage.setItem('userData', JSON.stringify(data));
         dispatch(loginUserFulfilled(data));
@@ -62,7 +63,7 @@ export const loginUser = (userData) => async (dispatch) => {
 export const increment = (userData) => async (dispatch) => {
     try {
         const updateData = { username: userData.name, points: 1 };
-        const { data } = await axios.put('http://localhost:8080/increment', updateData);
+        const { data } = await axios.put(`${server}/increment`, updateData);
         localStorage.setItem('userData', JSON.stringify(data));
         dispatch(incrementFulfilled(data));
     } catch (error) {

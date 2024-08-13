@@ -84,6 +84,7 @@ const Playground = () => {
             getCard(),
             getCard()
         ]
+     
         setDesk(deskE)
         setCCard(null)
         setDefuseCard([])
@@ -126,7 +127,6 @@ const Playground = () => {
                     handleOpen(true)
                 }, 500);
             }
-            return
         } //Defuse card
         else if (card.cardId === 2) {
             setCCard(() => {
@@ -160,27 +160,30 @@ const Playground = () => {
                 return card
             })
         }
-        if (existingCard.length === 0) {
 
+        if (existingCard.length === 0) {
             if (card.cardId === 1 || card.cardId === 2) {
                 dispatch(increment({ name: user?.userData?.Member }))
                 setWin(true)
                 setTimeout(() => {
                     handleOpen(true)
                 }, 500);
-            } else if (card.cardId == 4) {
+
+            }else if(card.cardId === 4) {
                 if (!checkForDefuseCard) {
                     setWin(false)
                     setTimeout(() => {
                         handleOpen(true)
                     }, 500);
                 } else {
+
                     setWin(true)
                     setTimeout(() => {
                         handleOpen(true)
                     }, 500);
                 }
-            } else if (card.cardId === 3) {
+            }else if(card.cardId === 3) {
+
                 setTimeout(() => {
                     startGame()
                 }, 500)
@@ -193,6 +196,8 @@ const Playground = () => {
             }
             return
         }
+
+        return
     }
 
     //Checking for any defuse card present or not

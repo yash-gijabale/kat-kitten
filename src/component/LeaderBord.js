@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import '../App.css'
+import {server} from '../config.js'
 const LeaderBoard = () => {
 
     const [leaderBoard, setLeaderBorad] = useState([])
 
     const getLeaderBoard = async () => {
-        let { data } = await axios.get('http://localhost:8080/getall')
+        let { data } = await axios.get(`${server}/getall`)
         console.log(data)
         setLeaderBorad(data)
     }
