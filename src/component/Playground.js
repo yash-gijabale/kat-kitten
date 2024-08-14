@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { increment, loadUser, loadUserData } from "../redux/slice/userSlice";
 import { json, useNavigate } from 'react-router-dom'
 import LeaderBoard from "./LeaderBord";
+import { getLeaderBoard } from "../redux/slice/leaderBoardSlice";
 
 const Playground = () => {
 
@@ -193,6 +194,7 @@ const Playground = () => {
                 setTimeout(() => {
                     handleOpen(true)
                 }, 500);
+                dispatch(getLeaderBoard(1))
             }
             return
         }
